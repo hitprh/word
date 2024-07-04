@@ -27,8 +27,259 @@ Bed sheets
 Alarm clock
 Lamp
 Desk
-Chair
 Table
+Blackboard
+Chalk
+Whiteboard
+Marker
+Textbook
+Notebook
+Pen
+Pencil
+Eraser
+Ruler
+Compass
+Protractor
+Calculator
+Backpack
+Lunchbox
+Water bottle
+Gym uniform
+Art supplies
+Scissors
+Glue stick
+Construction paper
+Folder
+Binder
+Highlighter
+Dictionary
+Library book
+Computer
+Headphones
+Microscope
+Bunsen burner
+Lab coat
+Safety goggles
+Magnifying glass
+Globe
+Map
+Clock
+Bell
+Podium
+Projector
+Screen
+Bulletin board
+Poster
+Easel
+Paintbrush
+Palette
+Crayons
+Markers
+Pencil case
+Stapler
+Paper clips
+Push pins
+Tape dispenser
+USB drive
+Keyboard
+Mouse
+Laptop
+Tablet
+Smartphone
+Charger
+Classroom carpet
+Bean bag chairs
+Educational games
+Desk lamp
+Teacher's desk
+Student ID
+Hall pass
+Report card
+Homework
+Test
+Grades
+Desktop computer
+Laptop
+Monitor
+Keyboard
+Mouse
+Speakers
+Headphones
+Printer
+Scanner
+External hard drive
+USB flash drive
+Router
+Modem
+Ethernet cables
+Wi-Fi adapter
+Computer case
+Motherboard
+CPU 
+Ram
+Graphics card
+Power supply unit 
+Storage drive 
+Operating system software
+Antivirus software
+Office productivity software
+Gaming peripherals
+gaming mouse
+gaming keyboard
+Webcam
+Microphone
+Cables and adapters 
+HDMI cables
+USB cables
+Screen cleaner
+Computer desk
+Computer chair
+UPS 
+Surge protector
+Cooling pad or cooling fan
+Computer tool kit
+Cleaning supplies for electronics
+Engine
+Transmission
+Carburetor
+Fuel pump
+Spark plugs
+Ignition coils
+Alternator
+Starter motor
+Battery
+Radiator
+Thermostat
+Water pump
+Timing belt/Chain
+Belts and hoses
+Oil filter
+Air filter
+Fuel filter
+Brake pads
+Brake discs/Drums
+Brake calipers
+Shock absorbers
+Struts
+Suspension springs
+Steering rack
+Tie rods
+Ball joints
+Wheel bearings
+Tires
+exhaust pipe
+Wheels
+Exhaust system parts 
+Gaskets and seals
+Engine oil
+muffler
+Transmission fluid
+Coolant
+Brake fluid
+Power steering fluid
+Windshield wipers
+Lights 
+Electrical wiring and connectors
+Diagnostic tools 
+Repair manuals
+Lubricants and greases
+Safety equipment 
+coveralls
+Shop equipment
+Cleaning supplies
+knife
+lifts
+Spatula
+air compressors
+Cutting board
+Spoon
+Fork
+Pan
+Pot
+Plate
+Bowl
+Mug
+Peeler
+Whisk
+Grater
+Colander
+Measuring cup
+Measuring spoons
+Mixing bowl
+Tongs
+Oven mitts
+Kitchen timer
+Blender
+Food processor
+Grill pan
+Saucepan
+Chef's knife
+Paring knife
+Bread knife
+Vegetable peeler
+Strainer
+Rolling pin
+Pastry brush
+Muffin tin
+Cake pan
+Pie dish
+Salad spinner
+Corkscrew
+Can opener
+Bottle opener
+Ice cream scoop
+Pizza cutter
+Garlic press
+Soup ladle
+Serving spoon
+Slotted spoon
+Potato masher
+Kitchen shears
+Cutting mat
+Trivet
+Jar opener
+Egg slicer
+Vegetable brush
+Basting brush
+Spatula set
+Microplane grater
+Citrus juicer
+Meat tenderizer
+Cookie cutters
+Pastry wheel
+Ramekins
+Meat thermometer
+Silicone baking mats
+Kitchen scale
+Stovetop espresso maker
+Tea kettle
+Salad tongs
+Gravy boat
+Tea infuser
+Cheese grater
+Butter dish
+Salt and pepper shakers
+Napkin holder
+Paper towel holder
+Kitchen sink
+Dish rack
+Dish towels
+Dish soap
+Sponge
+Trash bin
+Apron
+Recipe book
+Cookbook stand
+Utensil holder
+Toaster
+Microwave
+Refrigerator
+Freezer
+Dishwasher
+Wine glasses
+Wine opener
+Cocktail shaker
+Mixing glasses
 Plate
 Bowl
 Fork
@@ -51,6 +302,58 @@ Trash can
 Laundry detergent
 Washing machine
 Dryer
+Flower arrangements
+Bouquets
+Flower vases
+Flower pots
+Floral foam
+Ribbon and wrapping paper
+Scissors or floral shears
+Flower food or preservatives
+Watering cans
+Planters
+Gardening gloves
+Pruning shears
+Plant stands or shelves
+Fertilizers
+Potting soil
+Indoor plants 
+succulents
+ferns
+Outdoor plants
+shrubs
+trees
+Hanging baskets
+Plant labels
+Action figures
+Dolls
+Stuffed animals
+Board games
+Puzzles
+Building blocks 
+LEGO
+Toy vehicles
+cars
+trucks
+airplanes
+Dollhouses
+Playsets
+ airplanes
+farm sets
+pirate ships
+Arts and crafts supplies
+Educational toys
+Outdoor toys
+Ride-on toys
+Musical instruments for kids
+bikes
+scooters
+Role-play costumes and accessories
+Toy kitchen sets
+Remote-controlled toys
+Science kits
+Toy robots and electronics
+Books for children
 Iron
 Ironing board
 Vacuum cleaner
