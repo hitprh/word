@@ -117,6 +117,290 @@ Computer case
 Motherboard
 CPU 
 Ram
+Toothpaste
+Toothbrush
+Mouthwash
+Floss
+Shampoo
+Conditioner
+Body wash
+Soap
+Lotion
+Face wash
+Razor
+Shaving cream
+Deodorant
+Hand sanitizer
+Hand soap
+Facial tissues
+Toilet paper
+Paper towels
+Trash bags
+Zipper bags
+Laundry detergent
+Fabric softener
+Stain remover
+Dryer sheets
+Dish soap
+Dishwasher detergent
+Sponges
+Scrub brushes
+Cleaning cloths
+Disinfectant wipes
+Multi-surface cleaner
+Glass cleaner
+Furniture polish
+Air freshener
+Baking soda
+White vinegar
+Bleach
+Toilet bowl cleaner
+Mop
+Broom
+Dustpan
+Vacuum cleaner
+Dust cloths
+Lint roller
+Iron
+Ironing board
+Laundry basket
+Clothes hangers
+Light bulbs
+Batteries
+Extension cords
+Power strips
+Flashlight
+Matches
+Candles
+Fire extinguisher
+First aid kit
+Thermometer
+Band-aids
+Gauze
+Adhesive tape
+Antiseptic cream
+Pain relievers
+Cough syrup
+Vitamins
+Tweezers
+Nail clippers
+Scissors
+Sewing kit
+Measuring tape
+Screwdriver
+Hammer
+Nails
+Screws
+Duct tape
+Super glue
+Tape measure
+Level
+Pliers
+Utility knife
+Wrench
+Allen wrenches
+Plunger
+Drain cleaner
+Step stool
+Storage bins
+Plastic wrap
+Aluminum foil
+Wax paper
+Parchment paper
+Cutting board
+Mixing bowls
+Measuring cups
+Measuring spoons
+Whisk
+Spatula
+Tongs
+Passport
+Boarding pass
+Luggage
+Carry-on bag
+Laptop bag
+Travel pillow
+Neck pillow
+Blanket
+Eye mask
+Earplugs
+Headphones
+Noise-canceling headphones
+Phone charger
+Laptop charger
+Tablet charger
+Power bank
+Travel adapter
+Water bottle
+Snacks
+Gum
+Books
+Magazines
+Newspapers
+E-reader
+Laptop
+Tablet
+Smartphone
+Wallet
+Credit cards
+Cash
+ID card
+Watch
+Jewelry
+Sunglasses
+Prescription glasses
+Contact lenses
+Contact lens solution
+Toothbrush
+Toothpaste
+Mouthwash
+Deodorant
+Hand sanitizer
+Face mask
+Tissues
+Wet wipes
+Medication
+Prescription medicine
+Pain relievers
+Cough drops
+Lip balm
+Hand cream
+Travel-sized toiletries
+Comb
+Hairbrush
+Hair ties
+Shampoo
+Conditioner
+Body wash
+Soap
+Lotion
+Disposable razors
+Shaving cream
+Makeup
+Makeup remover
+Nail clippers
+Nail file
+Sunscreen
+Insect repellent
+Umbrella
+Travel documents
+Hotel reservation
+Car rental reservation
+Guidebook
+Travel map
+Language dictionary
+Pen
+Notebook
+Portable Wi-Fi device
+Business cards
+Luggage tags
+Luggage locks
+Luggage scale
+Travel insurance card
+Frequent flyer card
+Airport lounge pass
+Boarding group pass
+Priority pass
+Security checkpoint bins
+Duty-free shopping bags
+Souvenirs
+Travel games
+Playing cards
+Blanket scarf
+Travel socks
+Compression socks
+Foundation
+Concealer
+BB cream
+CC cream
+Powder
+Setting powder
+Blush
+Bronzer
+Highlighter
+Contour kit
+Primer
+Setting spray
+Eyeshadow palette
+Single eyeshadow
+Eyeliner pencil
+Liquid eyeliner
+Gel eyeliner
+Mascara
+Eyebrow pencil
+Eyebrow gel
+Eyebrow powder
+Eyebrow pomade
+Eyelash curler
+False eyelashes
+Eyelash glue
+Lipstick
+Liquid lipstick
+Lip gloss
+Lip liner
+Lip balm
+Lip scrub
+Lip stain
+Lip primer
+Makeup brushes
+Makeup sponges
+Beauty blender
+Brush cleaner
+Makeup remover
+Micellar water
+Cleansing oil
+Cleansing wipes
+Face cleanser
+Toner
+Serum
+Moisturizer
+Face mask
+Sheet mask
+Eye cream
+Exfoliator
+Face mist
+Facial roller
+Face primer
+Eye primer
+Nail polish
+Nail polish remover
+Cuticle oil
+Nail file
+Nail buffer
+Nail clippers
+Manicure set
+Pedicure set
+Hand cream
+Body lotion
+Body scrub
+Body oil
+Perfume
+Body mist
+Hairbrush
+Comb
+Hair ties
+Hair clips
+Dry shampoo
+Hair spray
+Hair gel
+Hair mousse
+Heat protectant spray
+Hair serum
+Hair mask
+Shampoo
+Conditioner
+Leave-in conditioner
+Hair dye
+Temporary hair color
+Wig
+Hair extensions
+Hair straightener
+Curling iron
+Blow dryer
+Hair diffuser
+Hair accessories
+Headbands
+Bobby pins
 Graphics card
 Power supply unit 
 Storage drive 
