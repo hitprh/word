@@ -1073,6 +1073,199 @@ Headlight bulb
 Headlight lens
 Headlight housing
 Headlight assembly
+Archery
+Australian Rules Football
+Badminton
+Baseball
+Basketball
+Biathlon
+Billiards
+Bobsledding
+Bodybuilding
+Bowling
+Boxing
+Canoeing
+Cheerleading
+Cricket
+Cross-Country Skiing
+Curling
+Cycling
+Darts
+Diving
+Equestrian
+Fencing
+Field Hockey
+Figure Skating
+Fishing
+Football
+Cargo pants
+Tank top
+Joggers
+Dress shirt
+Sweatpants
+Peasant top
+Denim shirt
+Track pants
+Hoodie
+Blouse
+Bermuda shorts
+Jeans
+Henley shirt
+Palazzo pants
+Crop top
+Oxford shirt
+Khakis
+Button-down shirt
+Leggings
+Dress pants
+Capri pants
+Chambray shirt
+Trousers
+Rugby shirt
+Culottes
+Flannel shirt
+Polo shirt
+Tunic
+Wide-leg pants
+T-shirt
+Chinos
+Overalls
+Long-sleeve shirt
+Hawaiian shirt
+Corduroy pants
+Shorts
+Peasant top
+Sweatshirt
+Sleeveless shirt
+Yoga pants
+Alabaster
+Amber
+Amethyst
+Apricot
+Aqua
+Aquamarine
+Azure
+Beige
+Black
+Blue
+Blush
+Bronze
+Brown
+Burgundy
+Burnt Orange
+Carmine
+Cerise
+Cerulean
+Champagne
+Charcoal
+Chartreuse
+Cherry
+Chestnut
+Chocolate
+Cinnamon
+Cobalt
+Copper
+Coral
+Crimson
+Cyan
+Dandelion
+Denim
+Ebony
+Emerald
+Fern
+Fuchsia
+Gold
+Gray
+Green
+Harlequin
+Indigo
+Ivory
+Jade
+Jasmine
+Khaki
+Lavender
+Lemon
+Lilac
+Lime
+Magenta
+Mahogany
+Maroon
+Mauve
+Mint
+Mustard
+Navy
+Olive
+Orange
+Peach
+Periwinkle
+Pink
+Platinum
+Plum
+Puce
+Purple
+Raspberry
+Red
+Rose
+Ruby
+Saffron
+Salmon
+Sapphire
+Scarlet
+Silver
+Slate
+Tan
+Taupe
+Teal
+Turquoise
+Ultramarine
+Vermilion
+Violet
+Wheat
+White
+Yellow
+Soccer
+Golf
+Gymnastics
+Handball
+Horse Racing
+Ice Hockey
+Judo
+Karate
+Lacrosse
+Martial Arts
+Mixed Martial Arts
+Modern Pentathlon
+Motor Racing
+Netball
+Parkour
+Polo
+Powerlifting
+Racquetball
+Rowing
+Rugby
+Sailing
+Shooting
+Skateboarding
+Skiing
+Snowboarding
+Snooker
+Soccer
+Softball
+Speed Skating
+Squash
+Surfing
+Swimming
+Synchronized Swimming
+Table Tennis
+Taekwondo
+Tennis
+Track and Field
+Trampolining
+Triathlon
+Volleyball
+Water Polo
+Weightlifting
+Wrestling
 Headlight bracket
 Headlight mount
 Headlight cover
@@ -1098,6 +1291,39 @@ Headlight retrofit
 Headlight mod
 Headlight kit
 Headlight kit
+Ballet flats
+Boat shoes
+Boots
+Brogues
+Clogs
+Espadrilles
+Flip-flops
+Galoshes
+Gladiator sandals
+High heels
+Hiking boots
+Loafers
+Moccasins
+Mules
+Oxfords
+Pumps
+Rain boots
+Running shoes
+Sandals
+Slides
+Slippers
+Sneakers
+Snow boots
+Stilettos
+Tennis shoes
+Thigh-high boots
+Wedges
+Work boots
+Nigella seeds
+Onion seeds
+Parsley seeds
+Poppy seeds
+Pumpkin seeds
 Headlight mount
 Headlight bucket
 Headlight fairing
