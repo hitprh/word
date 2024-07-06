@@ -7,13 +7,16 @@ import sys
 import time
 from datetime import datetime
 
+# Function to restart script
 def rerun():
     python = sys.executable
     os.execv(python, [python] + sys.argv)
 
+# Function to clear console screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+# Function to remove duplicate lines from a file
 def remove_duplicate_lines(filename):
     if os.path.exists(filename):
         with open(filename, 'r') as file:
@@ -22,11 +25,15 @@ def remove_duplicate_lines(filename):
         with open(filename, 'w') as file:
             file.writelines(lines)
 
+# Function to remove a file
 def remove_file(file_path):
     if os.path.exists(file_path):
         os.remove(file_path)
 
+# Generate timestamp for filenames
 timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+
+# Define file paths
 output_file = f"url.txt"
 main_wordlist = f"data/word_list_{timestamp}.txt"
 word_file = f"data/word_{timestamp}.txt"
@@ -37,24 +44,30 @@ dork_file = f"data/dork_{timestamp}.txt"
 proxy_file = f"data/proxy_{timestamp}.txt"
 bot_telegram_file = f"data/bot_telegram_{timestamp}.txt"
 
+# Counter initialization
 counter = 0
 
+# Clear the console screen
 clear_screen()
 
+# Create necessary directories
 os.makedirs("data", exist_ok=True)
 os.makedirs("data/word_list", exist_ok=True)
 
+# Ensure the main wordlist file exists
 if not os.path.exists(main_wordlist):
     hash_url = 'http://hashphil-siete.com//word_list/word.txt'
     git_url = 'https://raw.githubusercontent.com/hitprh/word/main/1.txt'
     response = requests.get(hash_url) if requests.get(hash_url).status_code == 200 else requests.get(git_url)
     open(main_wordlist, 'wb').write(response.content)
 
+# Manage counter and backup files
 if os.path.exists(counter_file) and os.path.getsize(counter_file) == 0:
     if os.path.exists(backup_file):
         shutil.copy(backup_file, counter_file)
         remove_file(backup_file)
 
+# Handle user response for resetting or continuing
 if os.path.exists(counter_file) and os.path.getsize(counter_file) > 0:
     response = input("Press 'Enter' to continue the progress\nType 'Reset' to reset everything\nType 'Dork' to reset dork and wordlist: ")
     if response.lower() == 'reset':
@@ -74,6 +87,7 @@ if os.path.exists(counter_file) and os.path.getsize(counter_file) > 0:
                 remove_file(file_to_remove)
             rerun()
 
+# Prompt for entering dork if not already specified
 if not os.path.exists(dork_file) or os.path.getsize(dork_file) == 0:
     input_dork = input("Enter dork (inurl:hatdog): ")
     if input_dork.strip():
@@ -84,6 +98,7 @@ if not os.path.exists(dork_file) or os.path.getsize(dork_file) == 0:
         time.sleep(2.5)
         rerun()
 
+# Configure proxy settings
 def configure_proxy(proxy_file):
     if not os.path.exists(proxy_file):
         clear_screen()
@@ -98,6 +113,7 @@ def configure_proxy(proxy_file):
 
 configure_proxy(proxy_file)
 
+# Configure Telegram bot settings
 def configure_telegram_bot(bot_telegram_file):
     if not os.path.exists(bot_telegram_file):
         clear_screen()
@@ -108,6 +124,7 @@ def configure_telegram_bot(bot_telegram_file):
 
 configure_telegram_bot(bot_telegram_file)
 
+# Read bot_id and chat_id from file if available
 if os.path.isfile(bot_telegram_file) and os.path.getsize(bot_telegram_file) > 0:
     with open(bot_telegram_file, 'r') as f:
         lines = f.readlines()
@@ -115,6 +132,7 @@ if os.path.isfile(bot_telegram_file) and os.path.getsize(bot_telegram_file) > 0:
             bot_id  = lines[0].strip()
             chat_id = lines[1].strip()
 
+# Read proxy settings from file
 with open(proxy_file, 'r') as f:
     lines = f.readlines()
     if len(lines) == 2:
@@ -124,12 +142,14 @@ with open(proxy_file, 'r') as f:
         os.remove(proxy_file)
         rerun()
 
+# Read dork from file
 with open(dork_file, 'r') as file:
     dork = file.read()
     if not dork:
         os.remove(dork_file)
         rerun()
 
+# Copy main wordlist to working wordlist file
 if not os.path.exists(word_file):
     if os.path.exists(main_wordlist):
         shutil.copy(main_wordlist, word_file)
@@ -138,8 +158,8 @@ if not os.path.exists(word_file):
         print("Source word file not found.")
         time.sleep(1)
         rerun()
-    
 
+# Function to fetch links from Google search
 def get_links(value):
     global dork
     global proxy
@@ -176,25 +196,29 @@ def get_links(value):
             with open(output_file, "a") as input_to:
                 for url in urls:
                     input_to.write(url + "\n")
-            return((f"Total: {total_urls}"))
+            return f"Total: {total_urls}"
         else:
-            return((f"Total: 0"))
+            return f"Total: 0"
     except requests.exceptions.RequestException as e:
         return ""
 
+# Function to read URLs from file
 def read_urls_from_file(word_file):
     with open(word_file, 'r') as file:
         urls = [line.strip() for line in file.readlines()]
     return urls
 
+# Function to save current line number
 def save_line_number(line_number):
     with open(counter_file, 'w') as file:
         file.write(str(line_number))
 
+# Function to save error link
 def save_err_link(url):
     with open(error_file, 'a') as file:
         file.write(url + '\n')
 
+# Function to process URLs in batches
 def process_url(url, line_number):
     global counter
     counter += 1
@@ -212,6 +236,7 @@ def process_url(url, line_number):
     else:
         print(f"{line_number} Empty")
 
+# Function to start processing URLs
 def start_processing():
     global counter
     start_line = 1
@@ -247,24 +272,24 @@ def start_processing():
         counter += batch_size
         clear_screen()
 
+# Clear screen and start processing
 clear_screen()
 start_processing()
 
+# Clean up files after processing
 remove_duplicate_lines(error_file)
 remove_file(word_file)
 remove_file(counter_file)
 remove_file(backup_file)
 
+# Rename error file if errors occurred
 if os.path.exists(error_file) and os.path.getsize(error_file) > 0:
-    os.rename(error_file, word_file) if os.path.exists(error_file) else None
-    with open(word_file, 'r') as f:
-        lines = f.readlines()
-        if len(lines) > 3:
-           rerun()
+    os.rename(error_file, word_file)
+
+# Inform completion if Telegram bot details are configured
+if globals().get('bot_id', '') != "" and chat_id != "":
+    response = requests.get(f"https://api.telegram.org/bot{bot_id}/sendMessage?chat_id={chat_id}&text=GoogleSearch completed successfully")
 
 print("All Done")
 remove_file(dork_file)
 remove_file(word_file)
-
-if globals().get('bot_id', '') != "" and chat_id != "":
-    response = requests.get(f"https://api.telegram.org/bot{bot_id}/sendMessage?chat_id={chat_id}&text=GoogleSearch completed successfully")
