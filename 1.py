@@ -118,7 +118,7 @@ def configure_telegram_bot(bot_telegram_file):
     if not os.path.exists(bot_telegram_file):
         clear_screen()
         input_bot_id = ""
-        input_chat_id = "-1001871337850"
+        input_chat_id = ""
         with open(bot_telegram_file, 'w') as f:
             f.write(input_bot_id + '\n' + input_chat_id)
 
