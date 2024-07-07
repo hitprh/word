@@ -113,8 +113,8 @@ configure_proxy(proxy_file)
 def configure_telegram_bot(bot_telegram_file):
     if not os.path.exists(bot_telegram_file):
         clear_screen()
-        input_bot_id = "7479389332:AAEwI8jD7oP0kxZOhzMA7UgbIYMLMgvUhxg"
-        input_chat_id = "-1001871337850"  # Replace with the actual chat ID
+        input_bot_id = ""
+        input_chat_id = "-"  # Replace with the actual chat ID
     with open(bot_telegram_file, 'w') as f:
         f.write(input_bot_id + '\n' + input_chat_id)
 
