@@ -6,6 +6,7 @@ import shutil
 import sys
 import time
 from datetime import datetime
+from urllib.parse import urlparse
 
 def rerun():
     python = sys.executable
@@ -14,20 +15,30 @@ def rerun():
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def remove_duplicate_lines(filename):
-    if os.path.exists(filename):
-        with open(filename, 'r') as file:
-            lines = file.readlines()
-        lines = list(dict.fromkeys(lines))
-        with open(filename, 'w') as file:
-            file.writelines(lines)
-
 def remove_file(file_path):
     if os.path.exists(file_path):
         os.remove(file_path)
 
+def remove_duplicate_domains(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+
+        unique_domains = set()
+        unique_lines = []
+
+        for line in lines:
+            url = line.strip()
+            domain = urlparse(url).netloc
+            if domain not in unique_domains:
+                unique_domains.add(domain)
+                unique_lines.append(line)
+
+        with open(filename, 'w') as file:
+            file.writelines(unique_lines)
+
 timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-output_file = f"url.txt"
+output_file = "url.txt"
 main_wordlist = f"data/word_list_{timestamp}.txt"
 word_file = f"data/word_{timestamp}.txt"
 counter_file = f"data/counter_{timestamp}.txt"
@@ -42,7 +53,6 @@ counter = 0
 clear_screen()
 
 os.makedirs("data", exist_ok=True)
-os.makedirs("data/word_list", exist_ok=True)
 
 if not os.path.exists(main_wordlist):
     hash_url = 'http://hashphil-siete.com//word_list/word.txt'
@@ -88,7 +98,7 @@ def configure_proxy(proxy_file):
     if not os.path.exists(proxy_file):
         clear_screen()
         input_proxy = "proxy.proxyverse.io:9200"
-        input_proxy_auth = "country-worldwide:517fc485-5327-4ca5-8495-271d49ec9e40"
+        input_proxy_auth = "country-worldwide:c25e16a1-52ae-4b90-b87e-182ec60a27bb"
         
         with open(proxy_file, 'w') as f:
             f.write(input_proxy + '\n' + input_proxy_auth)
@@ -138,7 +148,6 @@ if not os.path.exists(word_file):
         print("Source word file not found.")
         time.sleep(1)
         rerun()
-    
 
 def get_links(value):
     global dork
@@ -202,15 +211,11 @@ def process_url(url, line_number):
         clear_screen()
     if url.strip():
         output = get_links(url)
-        if output:
-            print(f"{line_number} {url} {output}")
-            save_line_number(line_number)
-            return line_number
-        else:
-            save_err_link(url)
-            print(f"{line_number} Empty output for: {url}")
-    else:
-        print(f"{line_number} Empty")
+        if output != "skip":
+            print(f"{counter}: {url} => {output}")
+        save_line_number(line_number)
+        return line_number
+    return None
 
 def start_processing():
     global counter
@@ -231,8 +236,8 @@ def start_processing():
             all_results.append(result)
         if None not in all_results:
             largest_number = max(all_results)
-            with open(backup_file, 'w') as f:
-               f.write(str(largest_number))
+            with open(backup_file, 'w') as file:
+                file.write(str(largest_number))
         processing_time = time.time() - start_time
         if len(all_results) == batch_size and processing_time < 4:
             clear_screen()
@@ -240,31 +245,9 @@ def start_processing():
             response = input(f"Proxy might have a problem.\nRewrite Proxy? Type Y to continue:").strip()
             if response.lower() == 'y':
                 remove_file(proxy_file)
-                clear_screen()
-                configure_proxy(proxy_file)
                 rerun()
-        remove_duplicate_lines(output_file)
-        counter += batch_size
-        clear_screen()
 
-clear_screen()
+        remove_duplicate_domains(output_file)
+
 start_processing()
-
-remove_duplicate_lines(error_file)
-remove_file(word_file)
-remove_file(counter_file)
-remove_file(backup_file)
-
-if os.path.exists(error_file) and os.path.getsize(error_file) > 0:
-    os.rename(error_file, word_file) if os.path.exists(error_file) else None
-    with open(word_file, 'r') as f:
-        lines = f.readlines()
-        if len(lines) > 3:
-           rerun()
-
-print("All Done")
-remove_file(dork_file)
-remove_file(word_file)
-
-if globals().get('bot_id', '') != "" and chat_id != "":
-    response = requests.get(f"https://api.telegram.org/bot{bot_id}/sendMessage?chat_id={chat_id}&text=GoogleSearch completed successfully")
+remove_duplicate_domains(error_file)
