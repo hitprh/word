@@ -97,8 +97,8 @@ if not os.path.exists(dork_file) or os.path.getsize(dork_file) == 0:
 def configure_proxy(proxy_file):
     if not os.path.exists(proxy_file):
         clear_screen()
-        input_proxy = "proxy.proxyverse.io:9200"
-        input_proxy_auth = "country-worldwide:c25e16a1-52ae-4b90-b87e-182ec60a27bb"
+        input_proxy = "alpha.premium.stellaproxies.com:5181"
+        input_proxy_auth = "m0vF7ujT:aOEEslR7"
         
         with open(proxy_file, 'w') as f:
             f.write(input_proxy + '\n' + input_proxy_auth)
@@ -225,7 +225,7 @@ def start_processing():
             start_line = int(file.read().strip())
     urls_list = read_urls_from_file(word_file)[start_line - 1:]
 
-    batch_size = 50
+    batch_size = 10
     for i in range(0, len(urls_list), batch_size):
         batch_urls = urls_list[i:i + batch_size]
         start_time = time.time() 
