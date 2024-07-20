@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# Update and upgrade the system
 sudo apt update
 sudo apt upgrade -y
 
@@ -10,49 +10,16 @@ sudo apt install nginx -y
 
 sudo apt install php7.4 php7.4-fpm php7.4-curl php7.4-mysql -y
 
+
 sudo systemctl start nginx
 sudo systemctl enable nginx
 sudo systemctl start php7.4-fpm
 sudo systemctl enable php7.4-fpm
 
-sudo truncate -s 0 /etc/nginx/nginx.conf
+sudo truncate -s 0 /etc/nginx/sites-available/default
 
 
-sudo cat << 'EOF' > /etc/nginx/nginx.conf
-user www-data;
-worker_processes auto;
-pid /run/nginx.pid;
-
-events {
-    worker_connections 768;
-}
-
-http {
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-    types_hash_max_size 2048;
-
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log;
-
-    gzip on;
-    gzip_disable "msie6";
-
-    include /etc/nginx/conf.d/*.conf;
-    include /etc/nginx/sites-enabled/*;
-
-    send_timeout 300s;
-    proxy_read_timeout 300s;
-    proxy_connect_timeout 300s;
-    proxy_send_timeout 300s;
-    fastcgi_read_timeout 300s;
-}
-
+cat << 'EOF' | sudo tee /etc/nginx/sites-available/default
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -78,6 +45,9 @@ server {
 EOF
 
 
+sudo sed -i '/http {/a \    # ... other configurations ...\n\n    send_timeout 300s;\n    proxy_read_timeout 300s;\n    proxy_connect_timeout 300s;\n    proxy_send_timeout 300s;\n    fastcgi_read_timeout 300s;' /etc/nginx/nginx.conf
+
+
 sudo nginx -t
 
 
@@ -90,4 +60,6 @@ echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
 sudo chown www-data:www-data /var/www/html/info.php
 sudo chmod 644 /var/www/html/info.php
 
+history -c
+sleep 1s
 echo "Installation and configuration complete."
