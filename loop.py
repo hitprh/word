@@ -38,7 +38,7 @@ def remove_duplicate_domains(filename):
             file.writelines(unique_lines)
 
 timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-output_file = "url.txt"
+output_file = "dork.txt"
 main_wordlist = f"data/word_list_{timestamp}.txt"
 word_file = f"data/word_{timestamp}.txt"
 counter_file = f"data/counter_{timestamp}.txt"
@@ -80,7 +80,7 @@ if os.path.exists(counter_file) and os.path.getsize(counter_file) > 0:
         response = input("Dork, Wordlist, Error and Counter files in the data folder will be deleted. Type Y to continue: ")
         if response.lower() == 'y':
             files_to_remove = [f"data/{filename}" for filename in os.listdir("data") if timestamp in filename]
-            for file_to_remove in files_to_remove:
+            for file_to_remove in those_files:
                 remove_file(file_to_remove)
             rerun()
 
@@ -242,7 +242,7 @@ def start_processing():
         if len(all_results) == batch_size and processing_time < 4:
             clear_screen()
             print("Processing too fast, potential errors. Adjusting speed.")
-            time.sleep(5)  
+            time.sleep(5)  # Adjust the processing speed
 
         remove_duplicate_domains(output_file)
 
