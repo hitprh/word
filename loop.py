@@ -241,11 +241,8 @@ def start_processing():
         processing_time = time.time() - start_time
         if len(all_results) == batch_size and processing_time < 4:
             clear_screen()
-            print("Processing too fast, potential errors.")
-            response = input(f"Proxy might have a problem.\nRewrite Proxy? Type Y to continue:").strip()
-            if response.lower() == 'y':
-                remove_file(proxy_file)
-                rerun()
+            print("Processing too fast, potential errors. Adjusting speed.")
+            time.sleep(5)  
 
         remove_duplicate_domains(output_file)
 
