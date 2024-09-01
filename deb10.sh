@@ -167,6 +167,7 @@ sleep 2s
 history -c
 clear
 
-echo "MICROSSH AUTO SCRIPT INSTALLATION COMPLETED"
-echo "OpenVPN configuration fix successfully."
-echo "Squid configuration successfully."
+echo "KING AUTO SCRIPT INSTALLATION COMPLETED"
+echo "Squid and Ovpn Fix."
+echo "Credits to BonvScript."
+echo "BonvScript Fixed Version By Mark King."
