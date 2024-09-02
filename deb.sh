@@ -11,7 +11,7 @@ PASSWORD_LENGTH=12
 DEBIAN_SOURCES_LIST="/etc/apt/sources.list"
 LOG_FILE="/var/log/installation_script.log"
 
-# Generate a secure password and send it to Telegram
+
 generate_password() {
     openssl rand -base64 $PASSWORD_LENGTH 2>>$LOG_FILE
 }
@@ -25,16 +25,16 @@ send_telegram_message() {
     fi
 }
 
-# Function to handle errors
+
 handle_error() {
     echo "Error: $1" | tee -a $LOG_FILE
     exit 1
 }
 
-# Redirect all output and errors to the log file
+
 exec > >(tee -a $LOG_FILE) 2>&1
 
-# Generate password and send to Telegram
+
 generated_password=$(generate_password)
 if [ -z "$generated_password" ]; then
     handle_error "Failed to generate password."
@@ -43,7 +43,7 @@ fi
 message="Your installation password is: $generated_password"
 send_telegram_message "$message"
 
-# Prompt the user to enter the password
+
 read -sp "Enter the password sent to your Telegram: " input_password
 echo
 
@@ -53,7 +53,7 @@ fi
 
 echo "Password correct. Proceeding with installation..."
 
-# Update package list
+
 apt update || handle_error "Failed to update package list."
 
 echo "Please select your OS version:"
@@ -64,7 +64,7 @@ echo "4. Debian 12"
 echo "5. Exit"
 read -p "Enter your choice [1-5]: " choice
 
-# Update sources.list based on user's choice
+
 case $choice in
     1)
         echo "You selected Debian 9"
@@ -142,7 +142,7 @@ deb-src http://deb.debian.org/debian/ bookworm-proposed-updates main contrib non
 
 END
 
-        # Install the required OpenSSL package
+
         wget -q http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb || handle_error "Failed to download libssl1.1 package"
         dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb || handle_error "Failed to install libssl1.1 package"
         ;;
@@ -159,7 +159,7 @@ echo "Sources list updated successfully."
 
 sleep 1s
 
-# Install required packages
+
 apt install -y || handle_error "Failed to install required packages."
 
 sleep 1s
@@ -193,7 +193,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 END
 
-# Reload systemd to recognize the new service
+
 systemctl daemon-reload
 systemctl enable king
 systemctl restart king
@@ -204,38 +204,35 @@ systemctl restart king
 
 sleep 1s
 
-cat << END > /etc/systemd/system/multimonitor.service 
+wget -q -O /usr/local/bin/portcheck.py https://raw.githubusercontent.com/hitprh/word/main/portcheck.py
+chmod +x /usr/local/bin/portcheck.py
+
+
+cat << END > /etc/systemd/system/portcheck.service 
 [Unit]
 Description=Monitor and restart specified services on failure
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c '
-while true; do
-  for SERVICE in stunnel4 dropbear squid openvpn ssh; do
-    if ! systemctl is-active --quiet "$SERVICE"; then
-      echo "$SERVICE is not running, restarting..."
-      systemctl restart "$SERVICE"
-    fi
-  done
-  sleep 5
-done'
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/bin/portcheck.py
 Restart=always
+RestartSec=10
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 
-
 END
 systemctl daemon-reload
-systemctl enable multimonitor
-systemctl restart multimonitor
+systemctl enable portcheck
+systemctl start portcheck
+systemctl restart portcheck
 
-# Step 6: Install Squid
+
 apt-get install squid
 apt install squid
 
-# Step 7: Configure Squid
 wget -qO /etc/squid/squid.conf https://raw.githubusercontent.com/Senpaiconfig/microsshpanel/main/squid.conf
 dos2unix -q /etc/squid/squid.conf
 service squid start
@@ -243,7 +240,6 @@ service squid restart
 sed -i "s|127.0.0.1|$(curl -s https://api.ipify.org)|g" /etc/squid/squid.conf && service squid restart
 
 
-# Step 8: Fix OpenVPN configuration
 bash -c "sed -i '/ncp-disable/d' /etc/openvpn/server/*.conf; systemctl restart openvpn-server@{ec_s,s}erver_{tc,ud}p"
 
 sed -i "s|127.0.0.1|$(curl -s https://api.ipify.org)|g" /etc/stunnel/stunnel.conf && service stunnel4 restart
@@ -261,19 +257,19 @@ restart_service() {
     fi
 }
 
-# Restart the services
+
 restart_service stunnel4
 restart_service dropbear
 restart_service squid
 restart_service openvpn
 restart_service ssh
 
-# Print final message
+
 echo "System services (proxy, SSH, OpenVPN, and Squid) have been restarted."
 sleep 2s
 apt update
 
-# Step 11: Cleanup logs and history
+
 echo "" > ~/.bash_history 
 echo '' > /var/log/syslog
 rm -f /etc/crontab
@@ -283,4 +279,4 @@ clear
 echo "KING AUTO SCRIPT INSTALLATION COMPLETED"
 echo "Squid and Ovpn Fix."
 echo "Credits to BonvScript."
-echo "BonvScript Fixed Version By Mark King."ss
+echo "BonvScript Fixed Version By Mark King."
