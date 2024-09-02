@@ -169,12 +169,12 @@ rm -f DebianVPS*
 wget -q 'https://raw.githubusercontent.com/Bonveio/BonvScripts/master/DebianVPS-Installer' 
 chmod +x DebianVPS-Installer 
 ./DebianVPS-Installer
-# Step 3: Get proxy template
-wget -q -O /etc/microssh https://raw.githubusercontent.com/bannerpy/Files/main/micro.py
-chmod +x /etc/microssh
 
-# Step 4: Install and configure microssh service
-cat << END > /etc/systemd/system/microssh.service 
+wget -q -O /etc/king https://raw.githubusercontent.com/hitprh/word/main/king.py
+chmod +x /etc/king
+
+
+cat << END > /etc/systemd/system/king.service 
 [Unit]
 Description=Micro Ssh
 Documentation=https://google.com
@@ -186,7 +186,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /etc/microssh
+ExecStart=/usr/bin/python -O /etc/king
 Restart=on-failure
 
 [Install]
@@ -195,23 +195,31 @@ END
 
 # Reload systemd to recognize the new service
 systemctl daemon-reload
-systemctl enable microssh
-systemctl restart microssh
+systemctl enable king
+systemctl restart king
 
-# Step 5: Update microssh configuration
-sed -i "/DEFAULT_HOST = '127.0.0.1:443'/c\DEFAULT_HOST = '127.0.0.1:550'" /etc/microssh
-systemctl restart microssh
+
+sed -i "/DEFAULT_HOST = '127.0.0.1:443'/c\DEFAULT_HOST = '127.0.0.1:550'" /etc/king
+systemctl restart king
 
 sleep 1s
 
-cat << END > /etc/systemd/system/sslmoni.service 
+cat << END > /etc/systemd/system/multimonitor.service 
 [Unit]
-Description=Monitor and restart stunnel4 on failure
-Wants=stunnel4.service
-After=stunnel4.service
+Description=Monitor and restart specified services on failure
+After=network.target
 
 [Service]
-ExecStart=/bin/bash -c 'while true; do systemctl is-active --quiet stunnel4 || systemctl restart stunnel4; sleep 5; done'
+ExecStart=/bin/bash -c '
+while true; do
+  for SERVICE in stunnel4 dropbear squid openvpn ssh; do
+    if ! systemctl is-active --quiet "$SERVICE"; then
+      echo "$SERVICE is not running, restarting..."
+      systemctl restart "$SERVICE"
+    fi
+  done
+  sleep 5
+done'
 Restart=always
 
 [Install]
@@ -220,8 +228,8 @@ WantedBy=multi-user.target
 
 END
 systemctl daemon-reload
-systemctl enable sslmoni
-systemctl restart sslmoni
+systemctl enable multimonitor
+systemctl restart multimonitor
 
 # Step 6: Install Squid
 apt-get install squid
@@ -238,31 +246,41 @@ sed -i "s|127.0.0.1|$(curl -s https://api.ipify.org)|g" /etc/squid/squid.conf &&
 # Step 8: Fix OpenVPN configuration
 bash -c "sed -i '/ncp-disable/d' /etc/openvpn/server/*.conf; systemctl restart openvpn-server@{ec_s,s}erver_{tc,ud}p"
 
+sed -i "s|127.0.0.1|$(curl -s https://api.ipify.org)|g" /etc/stunnel/stunnel.conf && service stunnel4 restart
 
-
-# Step 9: Start and restart Stunnel4 service
 service stunnel4 start
-service stunnel4 restart
 
-# Step 10: Update the system
+restart_service() {
+    service_name=$1
+    echo "Restarting $service_name..."
+    service $service_name restart
+    if [ $? -eq 0 ]; then
+        echo "$service_name restarted successfully."
+    else
+        echo "Failed to restart $service_name."
+    fi
+}
+
+# Restart the services
+restart_service stunnel4
+restart_service dropbear
+restart_service squid
+restart_service openvpn
+restart_service ssh
+
+# Print final message
+echo "System services (proxy, SSH, OpenVPN, and Squid) have been restarted."
+sleep 2s
 apt update
 
 # Step 11: Cleanup logs and history
 echo "" > ~/.bash_history 
 echo '' > /var/log/syslog
-
-sleep 2s
-
-# Step 12: Remove crontab files
 rm -f /etc/crontab
-
-sleep 2s
-
-# Step 13: Clear history and display message
 history -c
 clear
 
 echo "KING AUTO SCRIPT INSTALLATION COMPLETED"
 echo "Squid and Ovpn Fix."
 echo "Credits to BonvScript."
-echo "BonvScript Fixed Version By Mark King."
+echo "BonvScript Fixed Version By Mark King."ss
