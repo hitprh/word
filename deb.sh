@@ -217,7 +217,7 @@ After=network.target
 Type=simple
 ExecStart=/usr/bin/python3 /usr/local/bin/portcheck.py
 Restart=always
-RestartSec=10
+RestartSec=30
 Restart=on-failure
 
 [Install]
@@ -277,6 +277,7 @@ history -c
 clear
 
 echo "KING AUTO SCRIPT INSTALLATION COMPLETED"
+echo "Port Autocheck and Restart Added."
 echo "Squid and Ovpn Fix."
 echo "Credits to BonvScript."
 echo "BonvScript Fixed Version By Mark King."
