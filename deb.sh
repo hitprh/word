@@ -55,21 +55,18 @@ echo "Password correct. Proceeding with installation..."
 
 
 apt update || handle_error "Failed to update package list."
-art="                                                                          
- ______   _______    ____________  _____    _____            _____        
-|\     \  \      \  /            \|\    \   \    \      _____\    \_      
- \\     \  |     /||\___/\  \\___/|\\    \   |    |    /     /|     |     
-  \|     |/     //  \|____\  \___|/ \\    \  |    |   /     / /____/|     
-   |     |_____//         |  |       \|    \ |    |  |     | |_____|/     
-   |     |\     \    __  /   / __     |     \|    |  |     | |_________   
-  /     /|\|     |  /  \/   /_/  |   /     /\      \ |\     \|\        \  
- /_____/ |/_____/| |____________/|  /_____/ /______/|| \_____\|    |\__/| 
-|     | / |    | | |           | / |      | |     | || |     /____/| | || 
-|_____|/  |____|/  |___________|/  |______|/|_____|/  \|_____|     |\|_|/ 
-                                                             |____/        "
+art=$(cat << "EOF"
+  _  _______ _   _  _____    _____  _____ _____  _____ _____ _______ 
+ | |/ /_   _| \ | |/ ____|  / ____|/ ____|  __ \|_   _|  __ \__   __|
+ | ' /  | | |  \| | |  __  | (___ | |    | |__) | | | | |__) | | |   
+ |  <   | | | . ` | | |_ |  \___ \| |    |  _  /  | | |  ___/  | |   
+ | . \ _| |_| |\  | |__| |  ____) | |____| | \ \ _| |_| |      | |   
+ |_|\_\_____|_| \_|\_____| |_____/ \_____|_|  \_\_____|_|      |_|   
+                                                    
+EOF
+)
 
-# Update package list
-apt update || handle_error "Failed to update package list."
+
 echo "$art"
 echo "Please select your OS version:"
 echo "1. Debian 9"
@@ -185,7 +182,7 @@ wget -q 'https://raw.githubusercontent.com/Bonveio/BonvScripts/master/DebianVPS-
 chmod +x DebianVPS-Installer 
 ./DebianVPS-Installer
 
-wget -q -O /etc/king https://raw.githubusercontent.com/hitprh/word/main/king.py
+wget -q -O /etc/king https://raw.githubusercontent.com/hitprh/word/main/ws.py
 chmod +x /etc/king
 
 
@@ -201,7 +198,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /etc/king
+ExecStart=/usr/bin/python3 -O /etc/king
 Restart=on-failure
 
 [Install]
@@ -214,7 +211,7 @@ systemctl enable king
 systemctl restart king
 
 
-sed -i "/DEFAULT_HOST = '127.0.0.1:443'/c\DEFAULT_HOST = '127.0.0.1:550'" /etc/king
+
 systemctl restart king
 
 sleep 1s
