@@ -136,21 +136,22 @@ END
         echo "You selected Debian 12"
         rm -f $DEBIAN_SOURCES_LIST || handle_error "Failed to remove the current sources.list"
         cat << END > $DEBIAN_SOURCES_LIST
-# Debian 12 Bookworm
-deb http://deb.debian.org/debian/ bookworm main contrib non-free
-deb-src http://deb.debian.org/debian/ bookworm main contrib non-free
+# Debian Bookworm Repositories
+deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 
-deb http://security.debian.org/ bookworm-security main contrib non-free
-deb-src http://security.debian.org/ bookworm-security main contrib non-free
+# Debian Security Updates
+deb http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
 
-deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free
+# Debian Updates
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
 
-deb http://deb.debian.org/debian/ bookworm-backports main contrib non-free
-deb-src http://deb.debian.org/debian/ bookworm-backports main contrib non-free
+# Backports (if you need newer packages)
+deb http://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm-backports main contrib non-free non-free-firmware
 
-deb http://deb.debian.org/debian/ bookworm-proposed-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ bookworm-proposed-updates main contrib non-free
 
 END
 
