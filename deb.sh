@@ -55,7 +55,22 @@ echo "Password correct. Proceeding with installation..."
 
 
 apt update || handle_error "Failed to update package list."
+art="                                                                          
+ ______   _______    ____________  _____    _____            _____        
+|\     \  \      \  /            \|\    \   \    \      _____\    \_      
+ \\     \  |     /||\___/\  \\___/|\\    \   |    |    /     /|     |     
+  \|     |/     //  \|____\  \___|/ \\    \  |    |   /     / /____/|     
+   |     |_____//         |  |       \|    \ |    |  |     | |_____|/     
+   |     |\     \    __  /   / __     |     \|    |  |     | |_________   
+  /     /|\|     |  /  \/   /_/  |   /     /\      \ |\     \|\        \  
+ /_____/ |/_____/| |____________/|  /_____/ /______/|| \_____\|    |\__/| 
+|     | / |    | | |           | / |      | |     | || |     /____/| | || 
+|_____|/  |____|/  |___________|/  |______|/|_____|/  \|_____|     |\|_|/ 
+                                                             |____/        "
 
+# Update package list
+apt update || handle_error "Failed to update package list."
+echo "$art"
 echo "Please select your OS version:"
 echo "1. Debian 9"
 echo "2. Debian 10"
