@@ -213,8 +213,6 @@ systemctl restart king
 
 
 
-systemctl restart king
-
 sleep 1s
 
 wget -q -O /usr/local/bin/portcheck.py https://raw.githubusercontent.com/hitprh/word/main/portcheck.py
@@ -257,6 +255,8 @@ bash -c "sed -i '/ncp-disable/d' /etc/openvpn/server/*.conf; systemctl restart o
 
 sed -i "s|127.0.0.1|$(curl -s https://api.ipify.org)|g" /etc/stunnel/stunnel.conf && service stunnel4 restart
 
+sed -i '$ a\VersionAddendum <font color="green">MK DURAN</font>' /etc/ssh/sshd_config
+
 service stunnel4 start
 
 restart_service() {
@@ -281,6 +281,9 @@ restart_service ssh
 echo "System services (proxy, SSH, OpenVPN, and Squid) have been restarted."
 sleep 2s
 apt update
+apt upgrade -y
+apt full-upgrade -y
+apt autoremove -y
 
 
 echo "" > ~/.bash_history 
@@ -288,7 +291,7 @@ echo '' > /var/log/syslog
 rm -f /etc/crontab
 history -c
 clear
-
+echo "$art"
 echo "KING AUTO SCRIPT INSTALLATION COMPLETED"
 echo "Port Autocheck and Restart Added."
 echo "Squid and Ovpn Fix."
