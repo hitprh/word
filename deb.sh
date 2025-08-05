@@ -4,25 +4,7 @@
 # Binigay sainyo ng libre, ipamahagi nyo rin ng libre.
 
 # Configuration
-BOT_TOKEN="6717287182:AAECFFner_yyTQ2L05Tvx7CurhNTfMVsnIw"
-CHAT_ID="1472145668"
-TELEGRAM_URL="https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
-PASSWORD_LENGTH=12
-DEBIAN_SOURCES_LIST="/etc/apt/sources.list"
-LOG_FILE="/var/log/installation_script.log"
 
-generate_password() {
-    openssl rand -base64 48 | tr -dc 'a-zA-Z0-9' | head -c $PASSWORD_LENGTH 2>>$LOG_FILE
-}
-
-send_telegram_message() {
-    local message=$1
-    curl -s --data "text=$message" --data "chat_id=$CHAT_ID" "$TELEGRAM_URL" > /dev/null
-    if [ $? -ne 0 ]; then
-        echo "Failed to send Telegram message." | tee -a $LOG_FILE
-        exit 1
-    fi
-}
 
 handle_error() {
     echo "Error: $1" | tee -a $LOG_FILE
@@ -31,22 +13,6 @@ handle_error() {
 
 exec > >(tee -a $LOG_FILE) 2>&1
 
-generated_password=$(generate_password)
-if [ -z "$generated_password" ]; then
-    handle_error "Failed to generate password."
-fi
-
-message="Your installation password is: $generated_password"
-send_telegram_message "$message"
-
-echo "Enter the password sent to your Telegram: $generated_password"
-read -p "Enter the password: " input_password
-
-if [ "$input_password" != "$generated_password" ]; then
-    handle_error "Incorrect password. Exiting..."
-fi
-
-echo "Password correct. Proceeding with installation..."
 
 
 
